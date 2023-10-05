@@ -1,24 +1,24 @@
 import path from 'path';
 
-import webpack from 'webpack';
 import {buildWebpackConfig} from "./config/build/buildWebpackConfig";
 import {BuildEnv, BuildMode, BuildOptions} from "./config/build/types/config";
 
 export default (env: BuildEnv) => {
-    const mode = env.mode
-    const port = env.port || 3000
-
+    const mode = env.mode || BuildMode.DEVELOPMENT;
+    const isDev = mode === BuildMode.DEVELOPMENT;
+    const port = env.port || 3000;
+    const paths = {
+        entrySrc: path.resolve(__dirname, 'src', 'index.ts'),
+        outputSrc: path.resolve(__dirname, 'build'),
+        htmlTemplateSrc: path.resolve(__dirname, 'public', 'index.html')
+    };
 
     const webpackOptions: BuildOptions = {
         mode,
-        paths: {
-            entrySrc: path.resolve(__dirname, 'src', 'index.ts'),
-            outputSrc: path.resolve(__dirname, 'build'),
-            htmlTemplateSrc: path.resolve(__dirname, 'public', 'index.html')
-        },
-        isDev: mode === BuildMode.DEVELOPMENT,
+        paths,
+        isDev,
         port
-    }
+    };
 
-    return buildWebpackConfig(webpackOptions)
+    return buildWebpackConfig(webpackOptions);
 }
