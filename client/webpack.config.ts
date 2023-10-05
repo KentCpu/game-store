@@ -2,18 +2,13 @@ import path from 'path';
 
 import webpack from 'webpack';
 import {buildPlugins} from "./config/build/buildPlugins";
+import {buildLoaders} from "./config/build/buildLoaders";
 
 const config: webpack.Configuration = {
     mode: "development",
     entry: path.resolve(__dirname, 'src', 'index.ts'),
     module: {
-        rules: [
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
-            },
-        ],
+        rules: buildLoaders(),
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
