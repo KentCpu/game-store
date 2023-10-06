@@ -39,6 +39,7 @@
     "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
     "react/jsx-props-no-spreading": "warn",
     "react/require-default-props": "off",
+    "react/react-in-jsx-scope": "off",
     "react/forbid-prop-types": "off",
     "react/function-component-definition": "off",
     "react/no-find-dom-node": "off",
