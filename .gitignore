@@ -1,0 +1,14 @@
+# dependencies
+/client/node_modules
+
+# production
+/client/build
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# IDE cache directory
+/.idea
+/.vscode
