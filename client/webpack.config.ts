@@ -8,7 +8,7 @@ export default (env: BuildEnv) => {
     const isDev = mode === BuildMode.DEVELOPMENT;
     const port = env.port || 3000;
     const paths = {
-        entrySrc: path.resolve(__dirname, 'src', 'index.ts'),
+        entrySrc: path.resolve(__dirname, 'src', 'index.tsx'),
         outputSrc: path.resolve(__dirname, 'build'),
         htmlTemplateSrc: path.resolve(__dirname, 'public', 'index.html')
     };
