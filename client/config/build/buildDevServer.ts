@@ -5,5 +5,6 @@ export const buildDevServer = (options: BuildOptions): WebpackDevServerConfigura
   return {
     port: options.port,
     open: true,
+    historyApiFallback: true,
   };
 };

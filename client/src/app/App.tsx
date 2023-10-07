@@ -1,5 +1,11 @@
+import { RootProvider } from 'app/providers';
 import { GlobalStyles } from './styles';
 
 export const App = () => {
-  return <GlobalStyles />;
+  return (
+    <>
+      <RootProvider />
+      <GlobalStyles />
+    </>
+  );
 };
