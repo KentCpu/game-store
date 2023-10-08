@@ -20,7 +20,7 @@ import {
 } from 'styled-system';
 import styled from 'styled-components';
 
-interface BoxProps
+export interface BoxProps
   extends LayoutProps,
     PositionProps,
     FlexboxProps,
