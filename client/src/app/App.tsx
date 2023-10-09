@@ -3,9 +3,8 @@ import { GlobalStyles } from './styles';
 
 export const App = () => {
   return (
-    <>
-      <RootProvider />
+    <RootProvider>
       <GlobalStyles />
-    </>
+    </RootProvider>
   );
 };
