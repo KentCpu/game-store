@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   border,
   BorderProps,
@@ -13,36 +11,47 @@ import {
   PositionProps,
   space,
   SpaceProps,
-  typography,
-  TypographyProps,
   GridProps,
   grid,
+  BoxShadowProps,
+  BackgroundProps,
+  system,
 } from 'styled-system';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
+import isPropValid from '@emotion/is-prop-valid';
 
-export interface BoxProps
-  extends LayoutProps,
-    PositionProps,
-    FlexboxProps,
-    GridProps,
-    BorderProps,
-    TypographyProps,
-    ColorProps,
-    SpaceProps {
-  children?: React.ReactNode;
+interface BoxSystemProps {
+  boxSizing?: string;
 }
 
-const StyledBox = styled.div<BoxProps>`
-  ${layout}
-  ${position}
-  ${flexbox}
-  ${grid}
-  ${border}
-  ${typography}
-  ${color}
-  ${space}
-`;
+export type BoxProps = FlexboxProps &
+  LayoutProps &
+  SpaceProps &
+  BoxSystemProps &
+  PositionProps &
+  ColorProps &
+  BorderProps &
+  BoxShadowProps &
+  BackgroundProps &
+  GridProps;
 
-export const Box = ({ children, ...props }: BoxProps) => {
-  return <StyledBox {...props}>{children}</StyledBox>;
+export const Box = styled('div', {
+  shouldForwardProp: (prop) => isPropValid(prop),
+})<BoxProps>(
+  system({
+    boxSizing: true,
+    cursor: true,
+  }),
+  layout,
+  position,
+  flexbox,
+  grid,
+  border,
+  color,
+  space,
+  grid,
+);
+
+Box.defaultProps = {
+  boxSizing: 'border-box',
 };

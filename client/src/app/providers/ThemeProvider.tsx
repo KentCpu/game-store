@@ -1,4 +1,4 @@
-import { ThemeProvider as ThemeProviderStyled } from 'styled-components';
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { theme } from 'shared/const';
 import React from 'react';
 
@@ -7,5 +7,5 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  return <ThemeProviderStyled theme={theme}>{children}</ThemeProviderStyled>;
+  return <EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider>;
 };
