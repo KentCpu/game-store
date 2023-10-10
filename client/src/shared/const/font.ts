@@ -1,29 +1,46 @@
-const fontSizes = {
-  semiTiny: '8px',
-  tiny: '10px',
-  semiMicro: '11px',
-  micro: '12px',
-  semiMedium: '14px',
-  middling: '15px',
-  medium: '16px',
-  semiRegular: '18px',
-  regular: '20px',
-  semiLarge: '22px',
-  large: '24px',
-  semiModerate: '28px',
-  small: '30px',
-  moderate: '32px',
-  mild: '36px',
-  semiIncreased: '38px',
-  increased: '40px',
+interface FontSizes {
+  semiTiny: number;
+  tiny: number;
+  normal: number;
+  regular: number;
+  extra: number;
+  medium: number;
+  increased: number;
+  large: number;
+  huge: number;
+}
+
+interface FontFamilies {
+  primary: string;
+  secondary: string;
+}
+
+interface LineHeights {
+  micro: number;
+  extra: number;
+  small: number;
+  medium: number;
+  primary: number;
+}
+
+const fontSizes: FontSizes = {
+  semiTiny: 8,
+  tiny: 10,
+  normal: 12,
+  regular: 14,
+  extra: 16,
+  medium: 18,
+  increased: 20,
+  large: 26,
+  huge: 32,
 };
 
-const fontFamilies = {
+const fontFamilies: FontFamilies = {
   primary: 'Inter',
   secondary: 'Open Sans',
 };
 
-const lineHeights = {
+const lineHeights: LineHeights = {
   micro: 1.1,
   extra: 1.4,
   small: 1.5,
@@ -31,4 +48,4 @@ const lineHeights = {
   primary: 1.75,
 };
 
-export { fontSizes, fontFamilies, lineHeights };
+export { fontSizes, fontFamilies, lineHeights, FontSizes, FontFamilies, LineHeights };

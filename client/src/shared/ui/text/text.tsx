@@ -9,7 +9,7 @@ import {
   typography,
   TypographyProps,
 } from 'styled-system';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 interface TextProps extends ColorProps, SpaceProps, TypographyProps, LayoutProps {
   wordBreak?: string;

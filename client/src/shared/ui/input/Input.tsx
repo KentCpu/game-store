@@ -3,9 +3,9 @@ import { InputLabel, InputWrapper, StyledInput } from 'shared/ui/input/InputStyl
 import { Column } from 'shared/ui/column';
 import { Condition } from 'shared/ui/condition';
 import { Text } from 'shared/ui/text';
-import { useTheme } from 'styled-components';
 import { Row } from 'shared/ui/row';
 import { MarginProps } from 'styled-system';
+import { useTheme } from '@emotion/react';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'onBlur'>;
 
@@ -59,7 +59,7 @@ export const Input = memo((props: InputProps) => {
 
   return (
     <Column m={m} mt={mt} mb={mb} ml={ml} mr={mr}>
-      <InputWrapper $isInputFocus={isFocused} $isError={!!errorMessage}>
+      <InputWrapper isInputFocus={isFocused} isError={!!errorMessage}>
         <Condition match={!!label}>
           <InputLabel $isInputFill={value.length > 0} $isFocused={isFocused}>
             <Condition match={required}>

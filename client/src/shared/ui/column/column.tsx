@@ -1,11 +1,10 @@
-import React from 'react';
 import { Box, BoxProps } from 'shared/ui/box';
+import styled from '@emotion/styled';
 
-export const Column = ({ children, ...props }: BoxProps) => {
-  return <Box {...props}>{children}</Box>;
-};
+export const Column = styled(Box)<BoxProps>();
 
 Column.defaultProps = {
   display: 'flex',
   flexDirection: 'column',
+  boxSizing: 'border-box',
 };
