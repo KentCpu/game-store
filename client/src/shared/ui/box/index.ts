@@ -1,1 +1,1 @@
-export { Box, BoxProps } from './box';
+export { Box, BoxProps } from './box.component';

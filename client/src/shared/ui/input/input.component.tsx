@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
-import { InputLabel, InputWrapper, StyledInput } from 'shared/ui/input/InputStyles';
+import { InputLabel, InputWrapper, StyledInput } from 'shared/ui/input/input.styles';
 import { Column } from 'shared/ui/column';
 import { Condition } from 'shared/ui/condition';
 import { Text } from 'shared/ui/text';
@@ -88,4 +88,4 @@ export const Input = memo((props: InputProps) => {
   );
 });
 
-Input.displayName = 'Input';
+Input.displayName = 'InputComponent';

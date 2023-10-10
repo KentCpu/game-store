@@ -1,4 +1,4 @@
-import { Input } from 'shared/ui/input/Input';
+import { Input } from 'shared/ui/input/input.component';
 import React, { useState } from 'react';
 import { Column } from 'shared/ui/column';
 
