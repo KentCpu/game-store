@@ -1,1 +1,1 @@
-export { default as BasketPage } from './BasketPage';
+export { default as BasketPage } from './basket.page';

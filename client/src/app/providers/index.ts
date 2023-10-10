@@ -1,1 +1,1 @@
-export { RootProvider } from './RootProvider';
+export { RootProvider } from './root.provider';

@@ -1,1 +1,1 @@
-export { default as WishlistPage } from './WishlistPage';
+export { default as WishlistPage } from './wishlist.page';

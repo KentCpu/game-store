@@ -1,6 +1,6 @@
 import React from 'react';
-import { RouterProvider } from './RouterProvider';
-import { ThemeProvider } from './ThemeProvider';
+import { RouterProvider } from './router.provider';
+import { ThemeProvider } from './theme.provider';
 
 interface RootProviderProps {
   children: React.ReactNode;
