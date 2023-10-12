@@ -7,7 +7,7 @@ import { GamePage } from 'pages/game';
 import { BasketPage } from 'pages/basket';
 import { ProfilePage } from 'pages/profile';
 
-enum PathsPage {
+export enum PathsPage {
   HOME = '/',
   LOGIN = '/login',
   REGISTRATION = '/registration',
