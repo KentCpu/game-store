@@ -7,5 +7,20 @@ export const buildLoaders = (): webpack.RuleSetRule[] => {
     exclude: /node_modules/,
   };
 
-  return [typescriptLoader];
+  const fileLoader = {
+    test: /\.(png|jpe?g|gif)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+      },
+    ],
+  };
+
+  const svgLoader = {
+    test: /\.svg$/i,
+    issuer: /\.[jt]sx?$/,
+    use: ['@svgr/webpack'],
+  };
+
+  return [typescriptLoader, fileLoader, svgLoader];
 };
