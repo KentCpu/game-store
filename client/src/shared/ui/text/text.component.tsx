@@ -10,6 +10,7 @@ import {
   TypographyProps,
 } from 'styled-system';
 import styled from '@emotion/styled';
+import { theme } from 'shared/const';
 
 interface TextProps extends ColorProps, SpaceProps, TypographyProps, LayoutProps {
   wordBreak?: string;
@@ -35,8 +36,7 @@ export const Text = styled.span<TextProps>(
 
 Text.defaultProps = {
   fontWeight: 'normal',
-  fontFamily: 'primary',
-  fontSize: 'normal',
+  fontSize: theme.fontSizes.extra,
   lineHeight: 'normal',
   display: 'inline-flex',
 };
