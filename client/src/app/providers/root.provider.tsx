@@ -1,6 +1,7 @@
 import React from 'react';
 import { RouterProvider } from './router.provider';
 import { ThemeProvider } from './theme.provider';
+import { StoreProvider } from './store-provider/index';
 
 interface RootProviderProps {
   children: React.ReactNode;
@@ -8,9 +9,11 @@ interface RootProviderProps {
 
 export const RootProvider = ({ children }: RootProviderProps) => {
   return (
-    <ThemeProvider>
-      <RouterProvider />
-      {children}
-    </ThemeProvider>
+    <StoreProvider>
+      <ThemeProvider>
+        <RouterProvider />
+        {children}
+      </ThemeProvider>
+    </StoreProvider>
   );
 };

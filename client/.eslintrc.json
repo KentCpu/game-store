@@ -45,6 +45,7 @@
     "react/no-find-dom-node": "off",
     "prefer-destructuring": "warn",
     "no-shadow": "off",
+    "no-param-reassign": "off",
     "jsx-a11y/anchor-is-valid": ["error", { "components": ["Link"], "specialLink": ["to"] }],
     "jsx-a11y/label-has-for": [
       2,
