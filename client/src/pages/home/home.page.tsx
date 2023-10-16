@@ -4,8 +4,8 @@ import { Column } from 'shared/ui/column';
 import { Button } from 'shared/ui/button';
 import { Box } from 'shared/ui';
 import { AppLink } from 'shared/ui/app-link/app-link.component';
-import { PathsPage } from 'shared/lib/react-router';
 import { Checkbox } from 'shared/ui/checkbox';
+import { PathsPage } from 'shared/const';
 
 const HomePage = () => {
   const [email, setEmail] = useState('');

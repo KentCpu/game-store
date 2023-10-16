@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider as RouterDomProvider } from 'react-router-dom';
-import { userRoutes, viewerRoutes } from 'shared/lib/react-router';
+import { userRoutes, viewerRoutes } from '../config/routes';
 
 export const RouterProvider = () => {
   const isAuth = false;
