@@ -6,16 +6,8 @@ import { WishlistPage } from 'pages/wishlist';
 import { GamePage } from 'pages/game';
 import { BasketPage } from 'pages/basket';
 import { ProfilePage } from 'pages/profile';
-
-export enum PathsPage {
-  HOME = '/',
-  LOGIN = '/login',
-  REGISTRATION = '/registration',
-  GAME = '/game',
-  BASKET = '/basket',
-  WISHLIST = '/wishlist',
-  PROFILE = '/profile',
-}
+import ErrorBoundary from 'app/providers/error-boundary.provider';
+import { PathsPage } from 'shared/const';
 
 type ViewerRoutesPaths = PathsPage.HOME | PathsPage.LOGIN | PathsPage.REGISTRATION | PathsPage.GAME;
 
@@ -27,19 +19,35 @@ interface ViewerRoute {
 const viewerRoutes: ViewerRoute[] = [
   {
     path: PathsPage.HOME,
-    element: <HomePage />,
+    element: (
+      <ErrorBoundary>
+        <HomePage />
+      </ErrorBoundary>
+    ),
   },
   {
     path: PathsPage.REGISTRATION,
-    element: <RegistrationPage />,
+    element: (
+      <ErrorBoundary>
+        <RegistrationPage />
+      </ErrorBoundary>
+    ),
   },
   {
     path: PathsPage.LOGIN,
-    element: <LoginPage />,
+    element: (
+      <ErrorBoundary>
+        <LoginPage />
+      </ErrorBoundary>
+    ),
   },
   {
     path: PathsPage.GAME,
-    element: <GamePage />,
+    element: (
+      <ErrorBoundary>
+        <GamePage />
+      </ErrorBoundary>
+    ),
   },
 ];
 
@@ -58,27 +66,51 @@ interface UserRoute {
 const userRoutes: UserRoute[] = [
   {
     path: PathsPage.HOME,
-    element: <HomePage />,
+    element: (
+      <ErrorBoundary>
+        <HomePage />
+      </ErrorBoundary>
+    ),
   },
   {
     path: PathsPage.GAME,
-    element: <GamePage />,
+    element: (
+      <ErrorBoundary>
+        <GamePage />
+      </ErrorBoundary>
+    ),
   },
   {
     path: PathsPage.BASKET,
-    element: <BasketPage />,
+    element: (
+      <ErrorBoundary>
+        <BasketPage />
+      </ErrorBoundary>
+    ),
   },
   {
     path: PathsPage.GAME,
-    element: <GamePage />,
+    element: (
+      <ErrorBoundary>
+        <GamePage />
+      </ErrorBoundary>
+    ),
   },
   {
     path: PathsPage.WISHLIST,
-    element: <WishlistPage />,
+    element: (
+      <ErrorBoundary>
+        <WishlistPage />
+      </ErrorBoundary>
+    ),
   },
   {
     path: PathsPage.PROFILE,
-    element: <ProfilePage />,
+    element: (
+      <ErrorBoundary>
+        <ProfilePage />
+      </ErrorBoundary>
+    ),
   },
 ];
 

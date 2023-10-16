@@ -1,19 +1,22 @@
-import React from 'react';
-import { RouterProvider } from './router.provider';
+import { ReactNode } from 'react';
+import { RouterProvider } from 'app/providers/router-provider';
+import ErrorBoundary from './error-boundary.provider';
 import { ThemeProvider } from './theme.provider';
 import { StoreProvider } from './store-provider/index';
 
 interface RootProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const RootProvider = ({ children }: RootProviderProps) => {
   return (
-    <StoreProvider>
-      <ThemeProvider>
-        <RouterProvider />
-        {children}
-      </ThemeProvider>
-    </StoreProvider>
+    <ErrorBoundary>
+      <StoreProvider>
+        <ThemeProvider>
+          <RouterProvider />
+          {children}
+        </ThemeProvider>
+      </StoreProvider>
+    </ErrorBoundary>
   );
 };
