@@ -3,7 +3,9 @@ import React, {
   FormEventHandler,
   forwardRef,
   HTMLAttributes,
+  memo,
   ReactNode,
+  Ref,
   useId,
   useState,
 } from 'react';
@@ -27,64 +29,69 @@ interface CheckboxProps extends HTMLCheckboxProps {
   required?: boolean;
 }
 
-const CheckboxWithoutRef = (props: CheckboxProps) => {
-  const {
-    isChecked = false,
-    disabled = false,
-    onFocus,
-    onBlur,
-    onChange,
-    onChangeNative,
-    children,
-    ...otherProps
-  } = props;
-  const id = useId();
-  const [isFocused, setIsFocused] = useState(false);
+export const Checkbox = memo(
+  forwardRef((props: CheckboxProps, ref: Ref<HTMLInputElement>) => {
+    /* eslint-disable react/prop-types */
+    const {
+      isChecked = false,
+      disabled = false,
+      onFocus,
+      onBlur,
+      onChange,
+      onChangeNative,
+      children,
+      ...otherProps
+    } = props;
 
-  const handleFocus: CheckboxProps['onFocus'] = (e) => {
-    setIsFocused(true);
-    onFocus?.(e);
-  };
+    const id = useId();
+    const [isFocused, setIsFocused] = useState(false);
 
-  const handleBlur: CheckboxProps['onBlur'] = (e) => {
-    setIsFocused(false);
-    onBlur?.(e);
-  };
+    const handleFocus: CheckboxProps['onFocus'] = (e) => {
+      setIsFocused(true);
+      onFocus?.(e);
+    };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (disabled) return;
-    setIsFocused(false);
+    const handleBlur: CheckboxProps['onBlur'] = (e) => {
+      setIsFocused(false);
+      onBlur?.(e);
+    };
 
-    if (onChange) {
-      onChange(e.target.checked);
-    } else {
-      onChangeNative?.(e);
-    }
-  };
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      if (disabled) return;
+      setIsFocused(false);
 
-  return (
-    /* eslint-disable-next-line jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
-    <StyledLabel htmlFor={id}>
-      <VisuallyHiddenCheckbox
-        id={id}
-        type='checkbox'
-        checked={isChecked}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        {...otherProps}
-      />
-      <Condition match={isChecked}>
-        <CheckboxIcon isFocus={isFocused} />
-      </Condition>
-      <Condition match={!isChecked}>
-        <UncheckedCheckboxIcon isFocus={isFocused} />
-      </Condition>
-      <Text marginLeft='10px' color='rgba(255, 255, 255, 0.72)'>
-        {children}
-      </Text>
-    </StyledLabel>
-  );
-};
+      if (onChange) {
+        onChange(e.target.checked);
+      } else {
+        onChangeNative?.(e);
+      }
+    };
 
-export const Checkbox = forwardRef(CheckboxWithoutRef);
+    return (
+      /* eslint-disable-next-line jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
+      <StyledLabel htmlFor={id}>
+        <VisuallyHiddenCheckbox
+          id={id}
+          ref={ref}
+          type='checkbox'
+          checked={isChecked}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          {...otherProps}
+        />
+        <Condition match={isChecked}>
+          <CheckboxIcon isFocus={isFocused} />
+        </Condition>
+        <Condition match={!isChecked}>
+          <UncheckedCheckboxIcon isFocus={isFocused} />
+        </Condition>
+        <Text marginLeft='10px' color='rgba(255, 255, 255, 0.72)'>
+          {children}
+        </Text>
+      </StyledLabel>
+    );
+  }),
+);
+
+Checkbox.displayName = 'Checkbox';
