@@ -1,9 +1,5 @@
-/**
- * For a detailed explanation regarding each configuration property, visit:
- * https://jestjs.io/docs/configuration
- */
-
 import type { Config } from 'jest';
+import path from 'path';
 
 const config: Config = {
   clearMocks: true,
@@ -11,10 +7,14 @@ const config: Config = {
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
   moduleFileExtensions: ['js', 'mjs', 'cjs', 'jsx', 'ts', 'tsx', 'json', 'node'],
   moduleDirectories: ['node_modules'],
-  modulePaths: ['<rootDir>src'],
   rootDir: '../../',
+  modulePaths: ['<rootDir>src'],
   testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
-
+  setupFilesAfterEnv: ['<rootDir>config/jest/setup-tests.ts'],
+  snapshotSerializers: ['@emotion/jest/serializer'],
+  moduleNameMapper: {
+    '\\.svg': path.resolve(__dirname, 'svg-jest.tsx'),
+  },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
