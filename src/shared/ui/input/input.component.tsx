@@ -1,4 +1,12 @@
-import React, { InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
+import {
+  ChangeEvent,
+  InputHTMLAttributes,
+  memo,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { MarginProps } from 'styled-system';
 import { useTheme } from '@emotion/react';
 import { InputLabel, InputWrapper, StyledInput } from './input.styles';
@@ -9,14 +17,14 @@ import { Row } from '../row';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'onBlur'>;
 
-interface InputProps extends HTMLInputProps, MarginProps {
+export interface InputProps extends HTMLInputProps, MarginProps {
   label?: string;
   value?: string;
   onChange?: (value: string) => void;
   onBlur?: (value: string) => void;
   errorMessage?: string;
   autofocus?: boolean;
-  iconSvg?: React.ReactNode;
+  iconSvg?: ReactNode;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -50,18 +58,18 @@ export const Input = memo((props: InputProps) => {
 
   const onChangeFocus = () => setIsFocused(true);
 
-  const onChangeBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeBlur = (e: ChangeEvent<HTMLInputElement>) => {
     setIsFocused(false);
     onBlur?.(e.target.value);
   };
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => onChange?.(e.target.value);
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => onChange?.(e.target.value);
 
   return (
     <Column m={m} mt={mt} mb={mb} ml={ml} mr={mr}>
       <InputWrapper isInputFocus={isFocused} isError={!!errorMessage}>
         <Condition match={!!label}>
-          <InputLabel $isInputFill={value.length > 0} $isFocused={isFocused}>
+          <InputLabel $isInputFill={value?.length > 0} $isFocused={isFocused}>
             <Condition match={required}>
               {label}
               <Text ml='5px' color={errorMessage ? colors.red : colors.orange}>
