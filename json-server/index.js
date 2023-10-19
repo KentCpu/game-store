@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
-const jsonServer = require('json-server/index');
+const jsonServer = require('json-server');
 const path = require('path');
 const http = require('http');
 

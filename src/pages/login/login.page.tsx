@@ -1,8 +1,10 @@
+import { AuthContainer, LoginForm } from 'features/auth';
+
 const LoginPage = () => {
   return (
-    <div>
-      <p>Login page</p>
-    </div>
+    <AuthContainer>
+      <LoginForm />
+    </AuthContainer>
   );
 };
 

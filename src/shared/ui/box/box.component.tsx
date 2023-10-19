@@ -16,6 +16,8 @@ import {
   BoxShadowProps,
   BackgroundProps,
   system,
+  TextAlignProps,
+  textAlign,
 } from 'styled-system';
 import styled from '@emotion/styled';
 import isPropValid from '@emotion/is-prop-valid';
@@ -33,7 +35,8 @@ export type BoxProps = FlexboxProps &
   BorderProps &
   BoxShadowProps &
   BackgroundProps &
-  GridProps;
+  GridProps &
+  TextAlignProps;
 
 export const Box = styled('div', {
   shouldForwardProp: (prop) => isPropValid(prop),
@@ -50,6 +53,7 @@ export const Box = styled('div', {
   color,
   space,
   grid,
+  textAlign,
 );
 
 Box.defaultProps = {

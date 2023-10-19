@@ -1,6 +1,6 @@
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import React from 'react';
-import { theme } from '../../shared/const';
+import { theme } from 'shared/const';
 
 interface ThemeProviderProps {
   children: React.ReactNode;

@@ -1,9 +1,9 @@
 import { LinkProps } from 'react-router-dom';
 import { memo, ReactNode } from 'react';
-import { TypographyProps, BorderProps, PaddingProps } from 'styled-system';
+import { TypographyProps, BorderProps, SpaceProps } from 'styled-system';
 import { StyledLink } from './app-link.styles';
 
-interface AppLinkProps extends LinkProps, TypographyProps, BorderProps, PaddingProps {
+interface AppLinkProps extends LinkProps, TypographyProps, BorderProps, SpaceProps {
   children?: ReactNode;
 }
 

@@ -54,7 +54,7 @@ export const Input = memo((props: InputProps) => {
       setIsFocused(true);
       ref.current?.focus();
     }
-  }, [setIsFocused]);
+  }, [autofocus]);
 
   const onChangeFocus = () => setIsFocused(true);
 
@@ -80,6 +80,7 @@ export const Input = memo((props: InputProps) => {
           </InputLabel>
         </Condition>
         <StyledInput
+          ref={ref}
           type={type}
           value={value}
           onChange={onChangeHandler}
