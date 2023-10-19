@@ -18,6 +18,7 @@
   },
   "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
+    "max-len": [1, { "code": 100 }],
     "linebreak-style": "off",
     "arrow-parens": "off",
     "object-curly-newline": "off",
@@ -54,7 +55,6 @@
           "every": ["id"]
         }
       }
-    ],
-    "prettier/prettier": ["warn"]
+    ]
   }
 }

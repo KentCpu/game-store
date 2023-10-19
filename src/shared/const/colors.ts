@@ -6,6 +6,7 @@ interface Colors {
   grayLight: string;
   blueLight: string;
   blueDark: string;
+  darkGray: string;
 }
 
 const colors: Colors = {
@@ -16,6 +17,7 @@ const colors: Colors = {
   grayLight: 'rgba(255, 255, 255, 0.72)',
   blueLight: 'rgba(40,138,232,1)',
   blueDark: 'rgba(0, 116, 228, 1)',
+  darkGray: 'rgba(32, 32, 32, 1)',
 };
 
 export { colors, Colors };

@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
+import { typography, TypographyProps } from 'styled-system';
 import { ButtonSize, ButtonVariant } from './button.component';
 
-interface StyledButtonProps {
+interface StyledButtonProps extends TypographyProps {
   size: ButtonSize;
   variant: ButtonVariant;
   fullWidth: boolean;
@@ -9,7 +10,7 @@ interface StyledButtonProps {
 }
 
 export const StyledButton = styled.button<StyledButtonProps>((props) => {
-  const { theme, variant, size, fullWidth, disabled } = props;
+  const { theme, variant, size, fullWidth, disabled, ...typographyProps } = props;
 
   const sizeStyled = {
     s: '32px',
@@ -58,5 +59,6 @@ export const StyledButton = styled.button<StyledButtonProps>((props) => {
       'opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,' +
       'color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     ...variantStyles[variant],
+    ...typography(typographyProps),
   };
 });

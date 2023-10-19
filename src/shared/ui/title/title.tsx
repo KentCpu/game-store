@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import {
   color,
   ColorProps,
@@ -9,11 +10,8 @@ import {
   typography,
   TypographyProps,
 } from 'styled-system';
-import styled from '@emotion/styled';
-import { memo } from 'react';
-import { theme } from '../../const';
 
-interface TextProps extends ColorProps, SpaceProps, TypographyProps, LayoutProps {
+interface AdditionalTitleProps {
   wordBreak?: string;
   whiteSpace?: string;
   textTransform?: string;
@@ -21,7 +19,9 @@ interface TextProps extends ColorProps, SpaceProps, TypographyProps, LayoutProps
   cursor?: string;
 }
 
-const TextWithoutMemo = styled.span<TextProps>(
+type TitleProps = AdditionalTitleProps & ColorProps & SpaceProps & TypographyProps & LayoutProps;
+
+export const Title = styled.h1<TitleProps>(
   system({
     wordBreak: true,
     textTransform: true,
@@ -34,13 +34,3 @@ const TextWithoutMemo = styled.span<TextProps>(
   typography,
   layout,
 );
-
-export const Text = memo(TextWithoutMemo);
-
-Text.displayName = 'Text';
-
-TextWithoutMemo.defaultProps = {
-  fontWeight: 'normal',
-  fontSize: theme.fontSizes.extra,
-  lineHeight: 'normal',
-};

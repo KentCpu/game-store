@@ -5,7 +5,7 @@
   "users": [
     {
       "id": 1,
-      "username": "kent",
+      "email": "admin@gmail.com",
       "password": "qwerty"
     }
   ]

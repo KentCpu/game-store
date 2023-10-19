@@ -1,10 +1,11 @@
+import { TypographyProps } from 'styled-system';
 import { ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactNode } from 'react';
 import { StyledButton } from './button.styles';
 
 export type ButtonSize = 's' | 'm' | 'l' | 'xl';
 export type ButtonVariant = 'text' | 'outline' | 'contained';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, TypographyProps {
   size?: ButtonSize;
   variant?: ButtonVariant;
   fullWidth?: boolean;
