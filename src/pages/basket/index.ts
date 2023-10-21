@@ -1,1 +1,3 @@
-export { default as BasketPage } from './basket.page';
+import { BasketPageAsync } from './basket.async';
+
+export { BasketPageAsync as BasketPage };

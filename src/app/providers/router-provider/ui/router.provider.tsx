@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider as RouterDomProvider } from 'react-router-dom';
+import { Suspense } from 'react';
 import { userRoutes, viewerRoutes } from '../config/routes';
 
 export const RouterProvider = () => {
@@ -6,5 +7,9 @@ export const RouterProvider = () => {
   const routes = isAuth ? userRoutes : viewerRoutes;
   const router = createBrowserRouter(routes);
 
-  return <RouterDomProvider router={router} />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <RouterDomProvider router={router} />
+    </Suspense>
+  );
 };

@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useState } from 'react';
 import { Box, Input } from 'shared/ui';
 import { InputProps } from 'shared/ui/input';
 import { Condition } from 'shared/ui/condition';
@@ -11,12 +11,12 @@ export const InputPassword = memo((props: InputPasswordProps) => {
   const [isVisiblePassword, togglePassword] = useTogglePassword();
   const [focus, setFocus] = useState(false);
 
-  const clinkOnIcon = useCallback(() => {
+  const clinkOnIcon = () => {
     setFocus(true);
     togglePassword();
-  }, [setFocus]);
+  };
 
-  const onBlur = useCallback(() => setFocus(false), [setFocus]);
+  const onBlur = () => setFocus(false);
 
   return (
     <Input

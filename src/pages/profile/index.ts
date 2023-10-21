@@ -1,1 +1,3 @@
-export { default as ProfilePage } from './profile.page';
+import { ProfilePageAsync } from './profile.async';
+
+export { ProfilePageAsync as ProfilePage };
