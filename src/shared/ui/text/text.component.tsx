@@ -10,7 +10,6 @@ import {
   TypographyProps,
 } from 'styled-system';
 import styled from '@emotion/styled';
-import { memo } from 'react';
 import { theme } from '../../const';
 
 interface TextProps extends ColorProps, SpaceProps, TypographyProps, LayoutProps {
@@ -21,7 +20,7 @@ interface TextProps extends ColorProps, SpaceProps, TypographyProps, LayoutProps
   cursor?: string;
 }
 
-const TextWithoutMemo = styled.span<TextProps>(
+export const Text = styled.span<TextProps>(
   system({
     wordBreak: true,
     textTransform: true,
@@ -35,11 +34,7 @@ const TextWithoutMemo = styled.span<TextProps>(
   layout,
 );
 
-export const Text = memo(TextWithoutMemo);
-
-Text.displayName = 'Text';
-
-TextWithoutMemo.defaultProps = {
+Text.defaultProps = {
   fontWeight: 'normal',
   fontSize: theme.fontSizes.extra,
   lineHeight: 'normal',

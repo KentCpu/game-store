@@ -1,1 +1,3 @@
-export { default as RegistrationPage } from './registration.page';
+import { RegistrationPageAsync } from './registration.async';
+
+export { RegistrationPageAsync as RegistrationPage };
