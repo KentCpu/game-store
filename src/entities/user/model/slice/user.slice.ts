@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UserSchema } from 'entities/user/model/types/user';
+import { User, UserSchema } from 'entities/user/model/types/user';
 import { loginByEmail } from 'entities/user/model/service/login.service';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const';
 
-const initialState: UserSchema = {};
+export const initialState: UserSchema = {};
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, { payload }: PayloadAction<UserSchema>) => {
-      state.authData = payload.authData;
+    setUser: (state, { payload }: PayloadAction<User>) => {
+      state.authData = payload;
     },
     setInitAuthData: (state) => {
       const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
