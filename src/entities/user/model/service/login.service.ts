@@ -15,9 +15,10 @@ export const loginByEmail = createAsyncThunk<User, LoginByEmailProps>(
       const response = await axios.post('http://localhost:8000/login', authData);
 
       if (!response.data) throw new Error();
-
-      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
-      thunkApi.dispatch(userActions.setUser(response.data));
+      const { id, email } = response.data;
+      const user: User = { id, email };
+      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(user));
+      thunkApi.dispatch(userActions.setUser(user));
 
       return response.data;
     } catch (e) {

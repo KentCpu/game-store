@@ -8,7 +8,7 @@ import { AppLink } from 'shared/ui/app-link';
 import { InputPassword } from 'shared/ui/input-password';
 import { Title } from 'shared/ui/title';
 
-import { getUser } from 'entities/user';
+import { getLoading } from 'entities/user';
 import { useSelector } from 'react-redux';
 import { AuthError } from './auth-error.component';
 import { useLogin } from '../model/hooks/use-login';
@@ -16,7 +16,7 @@ import { useLogin } from '../model/hooks/use-login';
 export const LoginForm = () => {
   const { colors, fontSizes } = useTheme();
   const { login, email, password, onChangeEmail, onChangePassword, errors } = useLogin();
-  const { isLoading } = useSelector(getUser);
+  const isLoading = useSelector(getLoading);
 
   return (
     <Column width='480px' borderRadius='10px' padding='55px' backgroundColor={colors.darkGray}>
