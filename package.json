@@ -11,7 +11,8 @@
     "prettier": "npx prettier . --write",
     "lint": "npx eslint \"**/*.{ts,tsx}\"",
     "lint:fix": "npx eslint \"**/*.{ts,tsx}\" --fix",
-    "test": "jest --config config/jest/jest.config.ts"
+    "test": "jest --config config/jest/jest.config.ts",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -57,7 +58,8 @@
     "webpack": "^5.88.2",
     "webpack-bundle-analyzer": "^4.9.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.1",
