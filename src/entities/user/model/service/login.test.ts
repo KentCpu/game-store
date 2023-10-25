@@ -6,7 +6,8 @@ import axios from 'axios';
 import { loginByEmail } from './login.service';
 
 jest.mock('axios');
-const mockedAxios = jest.mocked(axios);
+
+const mockedAxios = jest.mocked(axios, { shallow: false });
 
 describe('login.service', () => {
   let dispatch: jest.Mock<ThunkDispatch<StateSchema, undefined, AnyAction>>;
@@ -25,8 +26,7 @@ describe('login.service', () => {
       email: 'example@gmail.com',
       password: 'qwerty',
     });
-    const result = await action(dispatch, getState, undefined);
-
+    const result = await action(dispatch, getState, { api: mockedAxios });
     expect(dispatch).toHaveBeenCalledTimes(2);
     expect(result.meta.requestStatus).toBe('fulfilled');
     expect(result.payload).toEqual(userValue);
@@ -38,7 +38,7 @@ describe('login.service', () => {
       email: 'example@gmail.com',
       password: 'qwerty',
     });
-    const result = await action(dispatch, getState, undefined);
+    const result = await action(dispatch, getState, { api: mockedAxios });
 
     expect(dispatch).toHaveBeenCalledTimes(2);
     expect(mockedAxios.post).toHaveBeenCalled();

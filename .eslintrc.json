@@ -55,6 +55,7 @@
           "every": ["id"]
         }
       }
-    ]
+    ],
+    "no-underscore-dangle": "off"
   }
 }
