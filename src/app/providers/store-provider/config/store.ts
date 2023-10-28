@@ -1,7 +1,8 @@
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { userReducer } from 'entities/user';
 import { createReducerManager } from 'app/providers/store-provider/config/reducer-manager';
-import { StateSchema } from './state-schema';
+import $api from 'shared/api/api';
+import { StateSchema, ThunkExtraArg } from './state-schema';
 
 export function createReduxStore(
   initialState: StateSchema,
@@ -14,10 +15,20 @@ export function createReduxStore(
 
   const reducerManager = createReducerManager(rootReducers);
 
+  const extraArg: ThunkExtraArg = {
+    api: $api,
+  };
+
   const store = configureStore({
     reducer: reducerManager.reduce,
     devTools: true,
     preloadedState: initialState,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: extraArg,
+        },
+      }),
   });
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

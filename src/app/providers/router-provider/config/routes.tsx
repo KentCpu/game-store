@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { PathsPage } from 'shared/const';
 import { HomePage } from '../../../../pages/home';
 import { RegistrationPage } from '../../../../pages/registration';
 import { LoginPage } from '../../../../pages/login';
@@ -7,7 +8,6 @@ import { GamePage } from '../../../../pages/game';
 import { BasketPage } from '../../../../pages/basket';
 import { ProfilePage } from '../../../../pages/profile';
 import ErrorBoundary from '../../error-boundary.provider';
-import { PathsPage } from '../../../../shared/const';
 
 type ViewerRoutesPaths = PathsPage.HOME | PathsPage.LOGIN | PathsPage.REGISTRATION | PathsPage.GAME;
 

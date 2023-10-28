@@ -1,2 +1,2 @@
 export * from './ui/store.provider';
-export { StateSchema, ReduxStoreWithManager } from './config/state-schema';
+export { StateSchema, ReduxStoreWithManager, ThunkConfig } from './config/state-schema';
