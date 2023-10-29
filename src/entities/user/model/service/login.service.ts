@@ -16,10 +16,9 @@ export const loginByEmail = createAsyncThunk<User, LoginByEmailProps, ThunkConfi
       const response = await extra.api.post<User>('/login', authData);
 
       if (!response.data) throw new Error();
-      const { id, email } = response.data;
-      const user: User = { id, email };
+      const { id, email, roles } = response.data;
+      const user: User = { id, email, roles };
       localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(user));
-
       return user;
     } catch (e) {
       return rejectWithValue(e);

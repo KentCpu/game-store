@@ -1,20 +1,22 @@
 import { describe, expect, test } from '@jest/globals';
 import { DeepPartial } from '@reduxjs/toolkit';
+import { Role } from 'shared/const';
 import { User, UserSchema } from '../types/user';
-import { userReducer, userActions, initialState } from './user.slice';
+import { initialState, userActions, userReducer } from './user.slice';
 
 describe('user.test', () => {
   test('should return initial state', () => {
-    expect(userReducer(undefined, { type: undefined })).toEqual({});
+    expect(userReducer(initialState, { type: undefined })).toEqual(initialState);
   });
 
   test('should save user data to store', () => {
     const user: User = {
       id: '1',
       email: 'example@gmail.com',
+      roles: [Role.User],
     };
 
-    const expectedUserData: DeepPartial<UserSchema> = { authData: user };
+    const expectedUserData: DeepPartial<UserSchema> = { authData: user, isInit: false };
     const nextState = userReducer(initialState, userActions.setUser(user));
     expect(nextState).toEqual(expectedUserData);
   });
@@ -23,6 +25,7 @@ describe('user.test', () => {
     const user: User = {
       id: '1',
       email: 'example@gmail.com',
+      roles: [Role.User],
     };
 
     const nextStateWithAuthData = userReducer(initialState, userActions.setUser(user));

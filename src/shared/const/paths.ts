@@ -6,4 +6,5 @@ export enum PathsPage {
   BASKET = '/basket',
   WISHLIST = '/wishlist',
   PROFILE = '/profile',
+  FORBIDDEN = '/forbidden',
 }

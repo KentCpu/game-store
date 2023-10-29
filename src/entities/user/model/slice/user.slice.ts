@@ -3,7 +3,9 @@ import { User, UserSchema } from 'entities/user/model/types/user';
 import { loginByEmail } from 'entities/user/model/service/login.service';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const';
 
-export const initialState: UserSchema = {};
+export const initialState: UserSchema = {
+  isInit: false,
+};
 
 export const userSlice = createSlice({
   name: 'user',
@@ -17,6 +19,7 @@ export const userSlice = createSlice({
       if (user) {
         state.authData = JSON.parse(user);
       }
+      state.isInit = true;
     },
     logOut: (state) => {
       localStorage.removeItem(USER_LOCALSTORAGE_KEY);
@@ -31,10 +34,12 @@ export const userSlice = createSlice({
       .addCase(loginByEmail.fulfilled, (state, action) => {
         state.authData = action.payload;
         state.isLoading = false;
+        state.isInit = true;
       })
       .addCase(loginByEmail.rejected, (state) => {
         state.authData = undefined;
         state.isLoading = false;
+        state.isInit = true;
       });
   },
 });

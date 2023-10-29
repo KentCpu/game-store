@@ -1,12 +1,13 @@
 import { useCallback, useState } from 'react';
-
 import { useAppDispatch } from 'shared/lib';
 import { loginByEmail } from 'entities/user';
+import { useNavigate } from 'react-router-dom';
+import { PathsPage } from 'shared/const';
 
 type ErrorState = {
-  email: string | null;
-  password: string | null;
-  loginDataInvalid: string | null;
+  email?: string | null;
+  password?: string | null;
+  loginDataInvalid?: string | null;
 };
 
 type UseLoginResult = {
@@ -20,6 +21,7 @@ type UseLoginResult = {
 
 export const useLogin = (): UseLoginResult => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [errors, setErrors] = useState<ErrorState>();
@@ -28,7 +30,7 @@ export const useLogin = (): UseLoginResult => {
   const onChangePassword = useCallback((value: string) => setPassword(value), [setPassword]);
 
   const validate = () => {
-    const newErrors: ErrorState = { email: null, password: null, loginDataInvalid: null };
+    const newErrors: ErrorState = {};
 
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (!email) newErrors.email = 'Обязательное поле';
@@ -48,7 +50,6 @@ export const useLogin = (): UseLoginResult => {
   const login = useCallback(async () => {
     try {
       if (!validate()) return;
-
       const response = await dispatch(loginByEmail({ email, password }));
       if (response.meta.requestStatus === 'rejected') {
         setErrors((prevError) => ({
@@ -56,11 +57,15 @@ export const useLogin = (): UseLoginResult => {
           loginDataInvalid: 'Неправильный e-mail или пароль',
         }));
       }
+
+      if (response.meta.requestStatus === 'fulfilled') {
+        navigate(PathsPage.HOME, { replace: true });
+      }
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e);
     }
-  }, [email, password]);
+  }, [email, password, errors]);
 
   return {
     email,

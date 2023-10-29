@@ -1,11 +1,18 @@
-import { createBrowserRouter, RouterProvider as RouterDomProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouteObject,
+  RouterProvider as RouterDomProvider,
+} from 'react-router-dom';
 import { Suspense } from 'react';
-import { userRoutes, viewerRoutes } from '../config/routes';
+import { routeConfig } from 'app/providers/router-provider/config/routes';
+import { PrivateRouter } from 'app/providers/router-provider/ui/private-router.component';
 
 export const RouterProvider = () => {
-  const isAuth = false;
-  const routes = isAuth ? userRoutes : viewerRoutes;
-  const router = createBrowserRouter(routes);
+  const routes = routeConfig.map((route) => ({
+    ...route,
+    element: <PrivateRouter roles={route.roles}>{route.element}</PrivateRouter>,
+  }));
+  const router = createBrowserRouter(routes as RouteObject[]);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>

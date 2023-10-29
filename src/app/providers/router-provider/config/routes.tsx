@@ -1,22 +1,22 @@
-import { ReactNode } from 'react';
-import { PathsPage } from 'shared/const';
-import { HomePage } from '../../../../pages/home';
-import { RegistrationPage } from '../../../../pages/registration';
-import { LoginPage } from '../../../../pages/login';
-import { WishlistPage } from '../../../../pages/wishlist';
-import { GamePage } from '../../../../pages/game';
-import { BasketPage } from '../../../../pages/basket';
-import { ProfilePage } from '../../../../pages/profile';
-import ErrorBoundary from '../../error-boundary.provider';
+import { RouteObject } from 'react-router-dom';
+import { PathsPage, Role } from 'shared/const';
+import { ForbiddenPage } from 'pages/forbidden';
 
-type ViewerRoutesPaths = PathsPage.HOME | PathsPage.LOGIN | PathsPage.REGISTRATION | PathsPage.GAME;
+import { HomePage } from 'pages/home';
+import ErrorBoundary from 'app/providers/error-boundary.provider';
+import { RegistrationPage } from 'pages/registration';
+import { LoginPage } from 'pages/login';
+import { GamePage } from 'pages/game';
+import { WishlistPage } from 'pages/wishlist';
+import { ProfilePage } from 'pages/profile';
+import { BasketPage } from 'pages/basket';
 
-interface ViewerRoute {
-  path: ViewerRoutesPaths;
-  element: ReactNode;
+interface Route extends Omit<RouteObject, 'path'> {
+  path: PathsPage;
+  roles?: Role[];
 }
 
-const viewerRoutes: ViewerRoute[] = [
+export const routeConfig: Route[] = [
   {
     path: PathsPage.HOME,
     element: (
@@ -24,6 +24,7 @@ const viewerRoutes: ViewerRoute[] = [
         <HomePage />
       </ErrorBoundary>
     ),
+    roles: [Role.VIEWER, Role.User],
   },
   {
     path: PathsPage.REGISTRATION,
@@ -32,6 +33,7 @@ const viewerRoutes: ViewerRoute[] = [
         <RegistrationPage />
       </ErrorBoundary>
     ),
+    roles: [Role.VIEWER],
   },
   {
     path: PathsPage.LOGIN,
@@ -40,6 +42,7 @@ const viewerRoutes: ViewerRoute[] = [
         <LoginPage />
       </ErrorBoundary>
     ),
+    roles: [Role.VIEWER],
   },
   {
     path: PathsPage.GAME,
@@ -48,53 +51,7 @@ const viewerRoutes: ViewerRoute[] = [
         <GamePage />
       </ErrorBoundary>
     ),
-  },
-];
-
-type UserRoutesPaths =
-  | PathsPage.HOME
-  | PathsPage.GAME
-  | PathsPage.BASKET
-  | PathsPage.WISHLIST
-  | PathsPage.PROFILE;
-
-interface UserRoute {
-  path: UserRoutesPaths;
-  element: ReactNode;
-}
-
-const userRoutes: UserRoute[] = [
-  {
-    path: PathsPage.HOME,
-    element: (
-      <ErrorBoundary>
-        <HomePage />
-      </ErrorBoundary>
-    ),
-  },
-  {
-    path: PathsPage.GAME,
-    element: (
-      <ErrorBoundary>
-        <GamePage />
-      </ErrorBoundary>
-    ),
-  },
-  {
-    path: PathsPage.BASKET,
-    element: (
-      <ErrorBoundary>
-        <BasketPage />
-      </ErrorBoundary>
-    ),
-  },
-  {
-    path: PathsPage.GAME,
-    element: (
-      <ErrorBoundary>
-        <GamePage />
-      </ErrorBoundary>
-    ),
+    roles: [Role.VIEWER, Role.User],
   },
   {
     path: PathsPage.WISHLIST,
@@ -103,6 +60,7 @@ const userRoutes: UserRoute[] = [
         <WishlistPage />
       </ErrorBoundary>
     ),
+    roles: [Role.User],
   },
   {
     path: PathsPage.PROFILE,
@@ -111,7 +69,24 @@ const userRoutes: UserRoute[] = [
         <ProfilePage />
       </ErrorBoundary>
     ),
+    roles: [Role.User],
+  },
+  {
+    path: PathsPage.BASKET,
+    element: (
+      <ErrorBoundary>
+        <BasketPage />
+      </ErrorBoundary>
+    ),
+    roles: [Role.User],
+  },
+  {
+    path: PathsPage.FORBIDDEN,
+    element: (
+      <ErrorBoundary>
+        <ForbiddenPage />
+      </ErrorBoundary>
+    ),
+    roles: [Role.VIEWER, Role.User],
   },
 ];
-
-export { viewerRoutes, userRoutes };
