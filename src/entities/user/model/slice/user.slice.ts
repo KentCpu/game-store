@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User, UserSchema } from 'entities/user/model/types/user';
-import { loginByEmail } from 'entities/user/model/service/login.service';
+import { loginByEmail } from 'entities/user/model/service/login/login.service';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const';
+import { registrationByEmail } from 'entities/user/model/service/registration/registration.service';
 
 export const initialState: UserSchema = {
   isInit: false,
@@ -37,6 +38,19 @@ export const userSlice = createSlice({
         state.isInit = true;
       })
       .addCase(loginByEmail.rejected, (state) => {
+        state.authData = undefined;
+        state.isLoading = false;
+        state.isInit = true;
+      })
+      .addCase(registrationByEmail.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(registrationByEmail.fulfilled, (state, action) => {
+        state.authData = action.payload;
+        state.isLoading = false;
+        state.isInit = true;
+      })
+      .addCase(registrationByEmail.rejected, (state) => {
         state.authData = undefined;
         state.isLoading = false;
         state.isInit = true;

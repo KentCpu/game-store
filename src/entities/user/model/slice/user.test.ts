@@ -13,7 +13,7 @@ describe('user.test', () => {
     const user: User = {
       id: '1',
       email: 'example@gmail.com',
-      roles: [Role.User],
+      roles: [Role.USER],
     };
 
     const expectedUserData: DeepPartial<UserSchema> = { authData: user, isInit: false };
@@ -25,7 +25,7 @@ describe('user.test', () => {
     const user: User = {
       id: '1',
       email: 'example@gmail.com',
-      roles: [Role.User],
+      roles: [Role.USER],
     };
 
     const nextStateWithAuthData = userReducer(initialState, userActions.setUser(user));
