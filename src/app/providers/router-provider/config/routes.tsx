@@ -24,7 +24,7 @@ export const routeConfig: Route[] = [
         <HomePage />
       </ErrorBoundary>
     ),
-    roles: [Role.VIEWER, Role.User],
+    roles: [Role.VIEWER, Role.USER],
   },
   {
     path: PathsPage.REGISTRATION,
@@ -51,7 +51,7 @@ export const routeConfig: Route[] = [
         <GamePage />
       </ErrorBoundary>
     ),
-    roles: [Role.VIEWER, Role.User],
+    roles: [Role.VIEWER, Role.USER],
   },
   {
     path: PathsPage.WISHLIST,
@@ -60,7 +60,7 @@ export const routeConfig: Route[] = [
         <WishlistPage />
       </ErrorBoundary>
     ),
-    roles: [Role.User],
+    roles: [Role.USER],
   },
   {
     path: PathsPage.PROFILE,
@@ -69,7 +69,7 @@ export const routeConfig: Route[] = [
         <ProfilePage />
       </ErrorBoundary>
     ),
-    roles: [Role.User],
+    roles: [Role.USER],
   },
   {
     path: PathsPage.BASKET,
@@ -78,7 +78,7 @@ export const routeConfig: Route[] = [
         <BasketPage />
       </ErrorBoundary>
     ),
-    roles: [Role.User],
+    roles: [Role.USER],
   },
   {
     path: PathsPage.FORBIDDEN,
@@ -87,6 +87,6 @@ export const routeConfig: Route[] = [
         <ForbiddenPage />
       </ErrorBoundary>
     ),
-    roles: [Role.VIEWER, Role.User],
+    roles: [Role.VIEWER, Role.USER],
   },
 ];

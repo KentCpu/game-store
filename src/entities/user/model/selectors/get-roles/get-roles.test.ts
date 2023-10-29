@@ -17,11 +17,11 @@ describe('get-init-user.selector', () => {
     const emptyState: DeepPartial<StateSchema> = {
       user: {
         authData: {
-          roles: [Role.User],
+          roles: [Role.USER],
         },
       },
     };
 
-    expect(getUserRoles(emptyState as StateSchema)).toEqual([Role.User]);
+    expect(getUserRoles(emptyState as StateSchema)).toEqual([Role.USER]);
   });
 });

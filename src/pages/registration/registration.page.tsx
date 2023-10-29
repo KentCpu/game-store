@@ -1,8 +1,11 @@
+import { AuthContainer } from 'features/auth';
+import { RegistrationForm } from 'features/auth/ui/registration-form.component';
+
 const RegistrationPage = () => {
   return (
-    <div>
-      <p>Registration Page</p>
-    </div>
+    <AuthContainer>
+      <RegistrationForm />
+    </AuthContainer>
   );
 };
 
